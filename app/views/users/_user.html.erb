@@ -1,0 +1,4 @@
+<p><%= user.email %></p>
+<% unless user == current_user %>
+  <%= link_to "トーク",  user %>
+<% end %>
