@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include SessionHelper
   before_action :authenticate_user!, only: :show
   
   def index
@@ -8,19 +9,20 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     unless @user.id == current_user.id
-      current_user_room = @current_user.user_rooms.all
-        @user.user_rooms.each do |room|
-          if current_user_room.include(room) then
+      unless @user.rooms.empty?
+        @user.rooms.each do |room|
+          if current_user.rooms.include?(room)
             @is_room = true
-            room_id = room.id
+            @room = room
             break
           end
         end
+      end
     end
     if @is_room
     else
       @room = Room.new
-      @user_rooms = UserRoom.new
+      @user_room = UserRoom.new
     end
   end
 end
