@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :user do
-    email { "hogehoge@gmail.com" }
+    email { "hogehoge@example.com" }
     password { "password" }
     
     trait :user_with_following do

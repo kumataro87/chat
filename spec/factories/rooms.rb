@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :room do
-    
   end
   #   email { "hogehoge@gmail.com" }
   #   password { "password" }

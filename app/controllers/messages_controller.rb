@@ -1,8 +1,7 @@
 class MessagesController < ApplicationController
-  # before_action :correct_user, only: [:create]
+  before_action :correct_user, only: [:create]
   
   def create
-    # message = Message.find(params[:id])
     message = current_user.messages.new(message_params)
     if message.save
     else  
@@ -17,8 +16,9 @@ class MessagesController < ApplicationController
       params.require(:message).permit(:content, :room_id)
     end
     
-    # def correct_user
-    #   room = Message.find_by(params[:message)
-    #   redirect_to root_url unless current_user
-    # end
+    # ユーザーが正しいことを確認する
+    def correct_user
+      room = Room.find(params[:message][:room_id])
+      redirect_to root_url unless room.users.include?(current_user)
+    end
 end
