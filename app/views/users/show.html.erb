@@ -11,12 +11,10 @@
         <%= fields_for @user_room do |e| %>
           <%= e.hidden_field :user_id, value: @user.id %>
         <% end %>
-        <%= f.submit "チャットを始める", class: "btn btn-primary"%>
+        <%= f.submit "トークへ", class: "btn btn-primary"%>
       <% end %>
       <% end %>
   <% else %>
     heelo
   <% end %>
 <% end %>
-    
-  

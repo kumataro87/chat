@@ -14,20 +14,16 @@ RSpec.describe "Messages", type: :request do
     
     context "正しいユーザーの場合" do
       it "登録できること" do
-      post user_session_path , params: { user: { email: "hogehoge@example.com",
-                                                 password: "password" } }
+      log_in(user)
       expect{ post messages_path, params: {message: { content: "hoge", room_id:1 } } 
-        
       }.to change(Message, :count).by(1)
       end
     end
     
     context "正しいユーザーでない場合" do
       it "登録できないこと" do
-      post user_session_path , params: { user: { email: unpaired_user.email,
-                                                 password: "password" } }
+      log_in(unpaired_user)
       expect{ post messages_path, params: {message: { content: "hoge", room_id:1 } } 
-        
       }.to_not change(Message, :count)
       end
     end
