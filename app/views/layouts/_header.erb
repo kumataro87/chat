@@ -1,24 +1,26 @@
-<!--https://tailblocks.cc/-->
-<header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap p-5 flex-co md:flex-row items-center">
-    <%= link_to("Chat App", root_path, {class: "flex title-font font-medium items-center text-gray-900 md-4 md:mb-0"}) %>
-    <% if user_signed_in? %>
-      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-        <%= link_to("プロフィール", current_user, {class: "mr-5 hover:text-gray-900"}) %></li>
-        <%= link_to("設定", edit_user_registration_path(current_user), {class: "mr-5 hover:text-gray-900"}) %>
-        <%= link_to("ログアウト", destroy_user_session_path, {method: :delete, class: "mr-5 hover:text-gray-900"}) %>
-      </nav>
-    <% else %>
-      <%#= link_to "アカウント作成" %>
-      <%#= link_to "ログイン", new_user_session_path %>
-      <div class="md:ml-auto">
-        <button class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0 md:mx-1">
-           ログイン
-        </button>
-        <button class="inline-flex items-center bg-indigo-500 text-white border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">
-           新規登録
-        </button>
-      </div>
-    <% end %>
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "Chat App", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Account <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Profile", current_user %></li>
+              <li><%= link_to "Settings", edit_user_registration_path(current_user) %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+        <% end %>
+      </ul>
+    </nav>
   </div>
 </header>
