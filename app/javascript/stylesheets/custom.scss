@@ -1,0 +1,34 @@
+$main-green: #48bb78;
+
+/*  header */
+header.navbar{
+  background-color: $main-green;
+  #logo {
+    color: #fff;
+    font-size: 1.5em;
+    text-decoration: none
+  }
+  .nav-link.dropdown-toggle {
+    color: #fff;
+    font-size: 1.15em;
+  }
+  // .btn {
+  //   background-color: transparent;
+  //   border: none;
+  //   font-size: 1.25em;
+  //   color: #fff;
+  //   &:hover {
+  //     background-color: transparent;
+  //     border: none;
+  //   }
+  //   &:focus, &.focus{
+  //     background-color: transparent;
+  //     border: none;
+  //   }
+  //   &:active, &.active{
+  //     background-color: $main-green;
+  //     border: none;
+  //     box-shadow:none
+  //   }
+  // }
+}
