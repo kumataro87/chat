@@ -1,7 +1,11 @@
-<h1>ユーザー一覧</h1>
-<% if user_signed_in? %>
-  <%= render @users %>
-<% else %>
-  <%= link_to "新規作成", new_user_registration_path %>
-  <%= link_to "ログイン", new_user_session_path %>
-<% end %>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <h1>ユーザー一覧</h1>
+    <% if user_signed_in? %>
+      <%= render @users %>
+    <% else %>
+      <%= link_to "新規作成", new_user_registration_path %>
+      <%= link_to "ログイン", new_user_session_path %>
+    <% end %>
+  </div>
+</div>

@@ -1,5 +1,23 @@
 <% if user == current_user %>
-  <%= link_to user.email, user %>
+  <div class="card">
+    <div class="card-body">
+      <% if user.avatar? %>
+        <%= image_tag user.avatar.profile_icon.url%>
+      <% else %>
+        <%= image_tag ("noavatar.png") %>
+      <% end %>
+      <%= link_to user.name,  user %>
+    </div>
+  </div>
 <% else %>
-  <%= link_to user.email, user %>
+  <div class="card">
+    <div class="card-body">
+      <% if user.avatar? %>
+        <%= image_tag user.avatar.profile_icon.url%>
+      <% else %>
+        <%= image_tag ("noavatar.png") %>
+      <% end %>
+      <%= link_to user.name,  user %>
+    </div>
+  </div>
 <% end %>

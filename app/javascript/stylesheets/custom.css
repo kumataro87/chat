@@ -1,0 +1,44 @@
+/* typography */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 1.5em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+}
+
+/*  header */
+header.navbar {
+  background-color: #48bb78;
+}
+header.navbar #logo {
+  color: #fff;
+  font-size: 1.5em;
+  text-decoration: none;
+}
+header.navbar .nav-item.sign-up {
+  border: solid #fff;
+  border-radius: 0.3em;
+}
+header.navbar .nav-link {
+  color: #fff;
+}
+header.navbar .nav-link.dropdown-toggle {
+  color: #fff;
+}
+
+/* root */
+.card {
+  border: none;
+  border-radius: none;
+}/*# sourceMappingURL=custom.css.map */

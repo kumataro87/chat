@@ -13,7 +13,11 @@ class RoomsController < ApplicationController
     if @room && @room.users.include?(current_user)
       @messages = @room.messages
       @message = Message.new
+      @room.users.each do |user|
+        @partner = user unless user != current_user
+      end
       @user_rooms = @room.user_rooms
+
     else
       redirect_back(fallback_location: root_path)
     end

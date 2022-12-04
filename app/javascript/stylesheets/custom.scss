@@ -1,22 +1,50 @@
 $main-green: #48bb78;
+$main-white: #fff;
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 1.5em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+}
 
 /*  header */
 header.navbar{
   background-color: $main-green;
   #logo {
-    color: #fff;
+    color: $main-white;
     font-size: 1.5em;
     text-decoration: none
   }
+
+  .nav-item.sign-up{
+    border: solid $main-white;
+    border-radius: 0.3em;
+  }
+  .nav-link{
+    color: $main-white;
+  }
   .nav-link.dropdown-toggle {
-    color: #fff;
-    font-size: 1.15em;
+    color: $main-white;
   }
   // .btn {
   //   background-color: transparent;
   //   border: none;
   //   font-size: 1.25em;
-  //   color: #fff;
+  //   color: $main-white;
   //   &:hover {
   //     background-color: transparent;
   //     border: none;
@@ -31,4 +59,18 @@ header.navbar{
   //     box-shadow:none
   //   }
   // }
+}
+
+/* root */
+.card {
+  border: none;
+  border-radius: none;
+  img {
+    border-radius: 50%;
+  }
+}
+
+/* devise/registrations#edit */ 
+input#user_avatar{
+  display: none;
 }
