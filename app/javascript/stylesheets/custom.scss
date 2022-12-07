@@ -1,4 +1,5 @@
 $main-green: #48bb78;
+$secondary-green: #48A078;
 $main-white: #fff;
 
 /* typography */
@@ -19,6 +20,15 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
+}
+
+.btn-main-green{
+  background-color: $main-green;
+  color: #fff;
+  &:hover {
+        background-color: $secondary-green;
+        color:#fff;
+      }
 }
 
 /*  header */
@@ -73,4 +83,20 @@ header.navbar{
 /* devise/registrations#edit */ 
 input#user_avatar{
   display: none;
+}
+
+/* user form */
+input:not(#user_remember_me){
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+img.avatar{
+  margin: 15px;
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
 }

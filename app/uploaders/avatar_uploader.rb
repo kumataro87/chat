@@ -29,7 +29,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  process resize_to_fit: [100, 100]
+  process resize_to_fit: [110, 110]
 
   version :profile_icon do
     process resize_to_fill: [60, 60, "center"]
