@@ -36,7 +36,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   version :room_icon do
-    process resize_to_fill: [50, 50, "center"]
+    process resize_to_fill: [45, 45, "center"]
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.

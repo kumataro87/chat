@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="cor-md6-6 offset-md-3">
+  <div class="col-md-6 offset-md-3">
     <div class="left-button">
       <%= link_to "ユーザー一覧に戻る", root_path %>
     </div>
@@ -11,23 +11,31 @@
           <% @messages.each do |message| %>
             <div class="card">
               <div class="card-body">
-              <% if message.user.avatar? %>
-                <%= image_tag message.user.avatar.room_icon.url%>
-              <% else %>
-                <%= image_tag ("noavatar.png") %>
-              <% end %>
-               <%= message.content %>
+                <div class="card-avatar">
+                  <% if message.user.avatar? %>
+                    <%= image_tag message.user.avatar.room_icon.url%>
+                  <% else %>
+                    <%= image_tag ("noavatar.png") %>
+                  <% end %>
+                </div>
+                <div class="card-content">
+                  <div class="card-user-name">
+                    <%= message.user.name %>
+                  </div>
+                  <div class="card-text">
+                    <%= message.content %>
+                  </div>
+                </div>
               </div>
             </div>
           <% end %>
         <% end %>
       </div>
       <div class="posts">
-        <%#= form_with(model: @message, local: true) do |f| %>
-        <%= form_with(model: @message, local: true) do |f| %>
+        <%= form_with(model: @message, local: true, class: :"post-form") do |f| %>
           <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
             <%= f.hidden_field :room_id, value: @room.id %>
-              <%= f.submit "投稿",class: 'form-submit'%>
+              <%= f.submit "投稿",class: 'btn btn-main-green form-submit'%>
         <% end %>
       </div>
     </div>

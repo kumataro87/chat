@@ -100,3 +100,29 @@ img.avatar{
   margin-top: -10px;
   margin-bottom: 10px;
 }
+
+/* room */
+.card-body {
+  display: flex;
+  padding-left:  0;
+  padding-right: 0;
+  .card-avatar{
+    width: 50px;
+  }
+  .card-content {
+    margin: 0 15px;
+  }
+}
+
+.post-form {
+  display:flex;
+  .form-text-field{
+    flex-basis:  auto;
+  }
+  .form-submit {
+    // flex-basis: 25%;
+    flex-basis:  45px;
+    margin-left: 10px;
+
+  }
+}
