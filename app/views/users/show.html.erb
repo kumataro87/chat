@@ -11,7 +11,7 @@
         <%= fields_for @user_room do |e| %>
           <%= e.hidden_field :user_id, value: @user.id %>
         <% end %>
-        <%= f.submit "トークへ", class: "btn btn-primary"%>
+        <%= f.submit "トークへ", class: "btn btn-link"%>
       <% end %>
       <% end %>
   <% else %>

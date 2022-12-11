@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-md-6 offset-md-3">
-    <div class="left-button">
-      <%= link_to "ユーザー一覧に戻る", root_path %>
+    <div class="room-top">
+      <p class="room-partner"><%= @partner.name %></p>
+      <%= link_to "ホームに戻る", root_path %>
     </div>
-    <h4 class="rooms-title"><%= @partner.name %></h4>
     <hr>
     <div class="chats">
       <div class="chat">
@@ -33,7 +33,7 @@
       </div>
       <div class="posts">
         <%= form_with(model: @message, local: true, class: :"post-form") do |f| %>
-          <%= f.text_field :content, placeholder: "メッセージを入力して下さい", class:"form-text-field" %>
+          <%= f.text_field :content, placeholder: "メッセージを入力して下さい", class:"form-text-field", autocomplete: "off" %>
             <%= f.hidden_field :room_id, value: @room.id %>
               <%= f.submit "送信",class: 'btn btn-main-green form-submit'%>
         <% end %>
