@@ -32,7 +32,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   process resize_to_fit: [110, 110]
 
   version :profile_icon do
-    process resize_to_fill: [60, 60, "center"]
+    process resize_to_fill: [50, 50, "center"]
   end
 
   version :room_icon do

@@ -2,22 +2,22 @@
   <div class="card">
     <div class="card-body">
       <% if user.avatar? %>
-        <%= image_tag user.avatar.profile_icon.url%>
+        <%= image_tag user.avatar.profile_icon.url, class: "user-avatar" %>
       <% else %>
-        <%= image_tag ("noavatar.png") %>
+        <%= image_tag ("noavatar_50.png"), class: "user-avatar"  %>
       <% end %>
-      <%= link_to user.name,  user %>
+      <%= link_to user.name,  user, class: "current-user user-name" %>
     </div>
   </div>
 <% else %>
   <div class="card">
     <div class="card-body">
       <% if user.avatar? %>
-        <%= image_tag user.avatar.profile_icon.url%>
+        <%= image_tag user.avatar.profile_icon.url, class: "user-avatar" %>
       <% else %>
-        <%= image_tag ("noavatar.png") %>
+        <%= image_tag ("noavatar_50.png"), class: "user-avatar"  %>
       <% end %>
-      <%= link_to user.name,  user %>
+      <%= link_to user.name,  user, class: "other-user user-name"  %>
     </div>
   </div>
 <% end %>

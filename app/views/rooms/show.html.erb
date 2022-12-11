@@ -15,7 +15,7 @@
                   <% if message.user.avatar? %>
                     <%= image_tag message.user.avatar.room_icon.url%>
                   <% else %>
-                    <%= image_tag ("noavatar.png") %>
+                    <%= image_tag ("noavatar_45.png") %>
                   <% end %>
                 </div>
                 <div class="card-content">
@@ -33,9 +33,9 @@
       </div>
       <div class="posts">
         <%= form_with(model: @message, local: true, class: :"post-form") do |f| %>
-          <%= f.text_field :content, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
+          <%= f.text_field :content, placeholder: "メッセージを入力して下さい", class:"form-text-field" %>
             <%= f.hidden_field :room_id, value: @room.id %>
-              <%= f.submit "投稿",class: 'btn btn-main-green form-submit'%>
+              <%= f.submit "送信",class: 'btn btn-main-green form-submit'%>
         <% end %>
       </div>
     </div>

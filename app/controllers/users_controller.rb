@@ -3,7 +3,9 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: :show
   
   def index
-    @users = User.all
+    @friend = current_user.following.where(id: current_user.follower_ids)
+    @following = current_user.following.where.not(id: current_user.follower_ids)
+    @followers = current_user.followers.where.not(id: current_user.following_ids)
   end
 
   def show

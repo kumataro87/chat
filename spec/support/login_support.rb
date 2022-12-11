@@ -11,7 +11,7 @@ module LoginSupport
   module Request
     def log_in(user)
       post user_session_path params: { user: { email: user.email,
-                                                  password: user.password}}
+                                                  password: user.password }}
     end
 
     def logged_in?

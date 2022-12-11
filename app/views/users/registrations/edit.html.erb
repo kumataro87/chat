@@ -42,10 +42,10 @@
         <% if resource.avatar? %>
           <%= image_tag resource.avatar.profile_icon.url, {class: "avatar"} %>
           <%# defauleはtype="submit"であるため、postリクエストが発火する %>
-          <button type="button" class="img-upload">変更する</button> 
+          <button type="button" class="btn btn-link avatar-upload">変更する</button> 
         <% else %>
-          <%= image_tag "noavatar.png", {class: "avatar"} %>
-          <button type="button" class="img-upload">変更する</button> 
+          <%= image_tag "noavatar_50.png", {class: "avatar"} %>
+          <button type="button" class="btn btn-link avatar-upload">変更する</button> 
         <% end %>
         <%= f.file_field :avatar %>
         <%= f.hidden_field :avatar_cache %>
@@ -66,7 +66,7 @@
 
 <script>
 // ファイル選択ボタンをクリックした際に、avatar file_field がクリックされるようにする
- document.querySelector(".img-upload").addEventListener("click", () => {
+ document.querySelector(".avatar-upload").addEventListener("click", () => {
    document.querySelector("#user_avatar").click();
 });
 </script>

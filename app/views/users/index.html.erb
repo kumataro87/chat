@@ -1,11 +1,41 @@
 <div class="row">
   <div class="col-md-6 offset-md-3">
-    <h1>ユーザー一覧</h1>
     <% if user_signed_in? %>
-      <%= render @users %>
-    <% else %>
-      <%= link_to "新規作成", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>
-    <% end %>
+      <div class="user-group">
+        <div class="user-group current-user">
+          <div class="user-group-detail current-user">
+            <div class="user-group-name">ユーザー</div>
+          </div>
+          <%= render current_user %>
+        </div>
+        <hr>
+        <div class="user-group friend">
+          <div class="user-group-detail friend">
+            <div class="user-group-name">友達</div>
+            <div class="user-group-count"><%= @friend.count %></div>
+          </div>
+          <%= render @friend %>
+        </div>
+        <hr>
+        <div class="user-group following">
+          <div class="user-group-detail following">
+            <div class="user-group-name">フォロー待ち</div>
+            <div class="user-group-count"><%= @following.count %></div>
+          </div>
+          <%= render @following if @following %>
+        </div>
+        <hr>
+        <div class="user-group followers">
+          <div class="user-group-detail followers">
+            <div class="user-group-name">フォローされいます</div>
+            <div class="user-group-count"><%= @followers.count %></div>
+          </div>
+          <%= render @followers if @followers %>
+        </div>
+      <% else %>
+        <%= link_to "新規作成", new_user_registration_path %>
+        <%= link_to "ログイン", new_user_session_path %>
+      <% end %>
+    </div>
   </div>
 </div>
