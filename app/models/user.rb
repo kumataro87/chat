@@ -9,13 +9,18 @@ class User < ApplicationRecord
   has_many :active_relationships,  class_name: "Relationship",
                                    foreign_key: "follower_id",
                                    dependent: :destroy
-  has_many :passive_relationships, class_name: "Relationship",
-                                   foreign_key: "followed_id",
+  has_many :passive_relationships, class_name: "Relationship",  
+                                   foreign_key: "followed_id",  
                                    dependent: :destroy
   # follwed_idの集合を作成
   has_many :following, through: :active_relationships, source: :followed
   # following_idの集合を作成
   has_many :followers, through: :passive_relationships
+
+  validates :name, presence: true, length: { maximum: 30 }
+  validates :introduction, length: { maximum: 255 }
+  validates :status_message, length: { maximum: 30 }
+  
   # uploaderをマウント(carrierwave uploader)
    mount_uploader :avatar, AvatarUploader
 

@@ -1,20 +1,18 @@
-<% unless current_user?(@user) %>
-  <% if mutual_followed?(@user) %>
-    <% if @is_room %>
-      <p class="room">
-        <%= link_to 'トークへ', @room %>
-      </p>
-    <% else %>
-      <!--roomとuser_roomsテーブルにレコードを作成する-->
-      <!--user_roomsレーブルにはuser_idを送る必要あり-->
-      <%= form_for @room do |f| %>
-        <%= fields_for @user_room do |e| %>
-          <%= e.hidden_field :user_id, value: @user.id %>
-        <% end %>
-        <%= f.submit "トークへ", class: "btn btn-link"%>
-      <% end %>
-      <% end %>
+<% if mutual_followed?(@user) %>
+  <% if @is_room %>
+    <p class="room">
+      <%= link_to 'トークへ', @room %>
+    </p>
   <% else %>
-    heelo
-  <% end %>
+    <!--roomとuser_roomsテーブルにレコードを作成する-->
+    <!--user_roomsレーブルにはuser_idを送る必要あり-->
+    <%= form_for @room do |f| %>
+      <%= fields_for @user_room do |e| %>
+        <%= e.hidden_field :user_id, value: @user.id %>
+      <% end %>
+      <%= f.submit "トークへ", class: "btn btn-link"%>
+    <% end %>
+    <% end %>
+<% else %>
+  heelo
 <% end %>

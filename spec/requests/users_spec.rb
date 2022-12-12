@@ -31,5 +31,20 @@ RSpec.describe "Users", type: :request do
         expect(response).to redirect_to new_user_session_path
       end
     end
+
+    context "自身のプロフィールにアクセスした場合" do
+      it "トーク(Link)が表示されていないこと" do
+      end
+      it "プロフィールを変更(リンク)が表示されていること"
+      end
+    end
+
+    context "Friendのプロフィールにアクセスした場合" do
+      it "トーク(Link)が表示されていること" do
+      end
+
+      it "プロフィールを変更(リンク)が表示されていないこと"
+      end
+    end
   end
 end
