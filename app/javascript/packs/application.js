@@ -20,4 +20,14 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application.scss";
-import "../stylesheets/custom.scss"
+import "../stylesheets/custom.scss";
+
+
+import "../javascripts/crop-image";
+
+// GET users/:id/account/edit
+import { selectRange, modalOpen, modalClose, insertImage } from "../javascripts/crop-image";
+global.selectRange  = selectRange
+global.modalOpen  = modalOpen
+global.modalClose = modalClose
+global.insertImage = insertImage

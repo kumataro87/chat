@@ -133,6 +133,48 @@ img.avatar{
   color: $heavy-gray;
 }
 
+#change-image {
+  display: block;
+  max-width: 100%;
+}
+
+#modal {
+  opacity: 0;
+  visibility: inherit;
+  z-index: -1;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 600px;
+  width:  600px;
+  overflow: auto;
+  background-color: #111;
+  .modal-content {
+    background-color: #111;
+  }
+  .modal-header {
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    h2 {
+      margin: 0;
+    }
+    #modal-close {
+      color: #fff;
+    }
+    #modal-cut {
+      color: #fff;
+    }
+  }
+  // .modal-content{
+  //   #before-image{
+  //     width: 100%;
+  //   }
+  // }
+}
+
 /* room */
 .room-top {
   display: flex;

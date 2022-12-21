@@ -1,0 +1,18 @@
+<div id="modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <button class="btn" id="modal-close", onclick="modalClose();">閉じる</button>
+      <h2>メディアを編集</h2>
+      <button class="btn" id="modal-cut">切り取る</button>
+    </div>
+    <div class="modal-content">
+      <div>
+        <%= image_tag '', id: "change-image" %> 
+      </div>
+      
+      <div>
+        <image id="changed-image"></image>
+      </div>
+    </div>
+  </div>
+</div>
