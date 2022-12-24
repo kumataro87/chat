@@ -1,10 +1,17 @@
 import Cropper from 'cropperjs'
 
 export function selectRange() {
+  // const scale
   const image = document.getElementById('change-image');
   const cropper = new Cropper(image, {
     aspectRatio: 1 / 1,
     viewMode: 3,
+    crop(e) {
+      document.getElementById("user_image_x").value = e.detail.x;
+      document.getElementById("user_image_y").value = e.detail.y;
+      document.getElementById("user_image_w").value = e.detail.width;
+      document.getElementById("user_image_h").value = e.detail.height;
+    }
   });
   document.getElementById('modal-cut').addEventListener('click', function () {
     const resultImgUrl = cropper.getCroppedCanvas().toDataURL();

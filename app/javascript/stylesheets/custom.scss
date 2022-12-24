@@ -168,12 +168,11 @@ img.avatar{
       color: #fff;
     }
   }
-  // .modal-content{
-  //   #before-image{
-  //     width: 100%;
-  //   }
-  // }
 }
+.cropper-view-box,
+  .cropper-face {
+    border-radius: 50%;
+  }
 
 /* room */
 .room-top {

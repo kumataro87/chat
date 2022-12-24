@@ -29,25 +29,39 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  process resize_to_fit: [110, 110]
+  process :crop  # 画像をトリミングする
+  process resize_to_fit: [300, 300]
 
   version :profile_icon do
-    process resize_to_fill: [50, 50, "center"]
+    process resize_to_fill: [60, 60]
   end
 
   version :room_icon do
-    process resize_to_fill: [45, 45, "center"]
+    process resize_to_fill: [45, 45]
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  # def extension_allowlist
-  #   %w(jpg jpeg gif png)
-  # end
+  def extension_allowlist
+    %w(jpg jpeg gif png)
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  private
+    # cropperjsで取得した情報を元にトリミングを行う
+    def crop
+      manipulate! do |img|
+        crop_x = model.image_x.to_i
+        crop_y = model.image_y.to_i
+        crop_w = model.image_w.to_i
+        crop_h = model.image_h.to_i
+        img.crop "#{crop_w}x#{crop_h}+#{crop_x}+#{crop_y}"
+        img
+      end
+    end 
 end

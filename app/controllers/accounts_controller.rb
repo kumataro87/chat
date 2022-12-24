@@ -17,7 +17,8 @@ class AccountsController < ApplicationController
 
   private
     def account_params
-      params.require(:user).permit(:name, :status_message, :introduction, :avatar)
+      attributes = [:name, :status_message, :introduction, :image_x, :image_y, :image_w, :image_h, :avatar]
+      params.require(:user).permit(attributes)
     end
 
     # 正しいユーザーか確認

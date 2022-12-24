@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-6 offset-md-3">
     <h2>プロフィールを編集</h2>
-    <%=form_with model: @user, url: {controller: "accounts", action: "update"},  local: true do |f| %>
+    <%=form_with model: @user, url: {controller: "accounts", action: "update"}, id: "account_form", local: true do |f| %>
       <%#= render "users/shared/error_messages", resource: resource %>
       <div class="field">
         <%= f.label :name %><br />
@@ -26,8 +26,12 @@
         <% end %>
         <%# defauleのtype="submit" でclickするとpostリクエストが発生する %>
         <button type="button" class="btn btn-link avatar-upload">変更する</button> 
-        <%= f.file_field   :avatar, onchange: "test(this);" %>
+        <%= f.file_field   :avatar, onchange: "test(this);",  accept: "image/*" %>
         <%= f.hidden_field :avatar_cache %>
+        <%= f.hidden_field :image_x %>
+        <%= f.hidden_field :image_y %>
+        <%= f.hidden_field :image_w %>
+        <%= f.hidden_field :image_h %>
       </div>
 
       <div class="actions">
@@ -50,7 +54,7 @@ function test(ob){
   const img = document.getElementById("change-image")
   modalOpen()
   insertImage(ob)
-  img.addEventListener('load', () => {
+  var result = img.addEventListener('load', () => {
     selectRange()
   })
 }

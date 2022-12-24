@@ -23,6 +23,10 @@ class User < ApplicationRecord
   
   # uploaderをマウント(carrierwave uploader)
    mount_uploader :avatar, AvatarUploader
+   attr_accessor :image_x
+   attr_accessor :image_y
+   attr_accessor :image_w
+   attr_accessor :image_h
 
   def follow(other_user)
     following << other_user
