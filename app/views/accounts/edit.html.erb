@@ -26,7 +26,7 @@
         <% end %>
         <%# defauleのtype="submit" でclickするとpostリクエストが発生する %>
         <button type="button" class="btn btn-link avatar-upload">変更する</button> 
-        <%= f.file_field   :avatar, onchange: "test(this);",  accept: "image/*" %>
+        <%= f.file_field   :avatar, onchange: "cropperAvatar(this);",  accept: "image/*" %>
         <%= f.hidden_field :avatar_cache %>
         <%= f.hidden_field :image_x %>
         <%= f.hidden_field :image_y %>
@@ -47,15 +47,4 @@
   document.querySelector(".avatar-upload").addEventListener("click", () => {
   document.querySelector("#user_avatar").click();
 });
-</script>
-
-<script>
-function test(ob){
-  const img = document.getElementById("change-image")
-  modalOpen()
-  insertImage(ob)
-  var result = img.addEventListener('load', () => {
-    selectRange()
-  })
-}
 </script>

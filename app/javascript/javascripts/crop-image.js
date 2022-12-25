@@ -1,7 +1,6 @@
 import Cropper from 'cropperjs'
 
-export function selectRange() {
-  // const scale
+function selectRange(obj) {
   const image = document.getElementById('change-image');
   const cropper = new Cropper(image, {
     aspectRatio: 1 / 1,
@@ -19,8 +18,14 @@ export function selectRange() {
     result.width  = 50;
     result.height = 50;
     result.src = resultImgUrl;
+    cropper.destroy()
     modalClose()
   });
+  document.getElementById('modal-close').addEventListener('click', function(){
+    obj.value = ""
+    cropper.destroy()
+    modalClose()
+  })
 }
 
 export function insertImage(obj) {
@@ -31,13 +36,22 @@ export function insertImage(obj) {
     fileReader.readAsDataURL(obj.files[0]);
 }
 
-export function modalOpen() {
+export function cropperAvatar(obj){
+  const img = document.getElementById("change-image")
+  modalOpen()
+  insertImage(obj)
+  img.addEventListener('load', () => {
+    selectRange(obj)
+  })
+}
+
+function modalOpen() {
     const modal = document.getElementById('modal')
     modal.style.opacity = 1
     modal.style.zIndex  = 1
 }
 
-export function modalClose() {
+function modalClose() {
   const modal = document.getElementById('modal')
   imgReset
   modal.style.opacity = 0
