@@ -22,8 +22,10 @@ function selectRange(obj) {
     modalClose()
   });
   document.getElementById('modal-close').addEventListener('click', function(){
-    obj.value = ""
+    // getCroppedCanvas()を実行しない場合、再度画像を変更する際に以前読み込んだ画像が表示される
+    cropper.getCroppedCanvas().toDataURL();
     cropper.destroy()
+    obj.value = ""
     modalClose()
   })
 }
@@ -53,12 +55,6 @@ function modalOpen() {
 
 function modalClose() {
   const modal = document.getElementById('modal')
-  imgReset
   modal.style.opacity = 0
   modal.style.zIndex = -1
-}
-
-function imgReset() {
-  const img = document.getElementById("change-image")
-  img.src = ''
 }
