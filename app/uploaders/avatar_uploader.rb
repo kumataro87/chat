@@ -32,12 +32,12 @@ class AvatarUploader < CarrierWave::Uploader::Base
   process :crop  # 画像をトリミングする
   process resize_to_fit: [300, 300]
 
-  version :profile_icon do
-    process resize_to_fill: [60, 60]
+  version :big_icon do
+    process resize_to_fit: [90, 90]
   end
 
-  version :room_icon do
-    process resize_to_fill: [45, 45]
+  version :mini_icon do
+    process resize_to_fit: [45, 45]
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.

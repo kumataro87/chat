@@ -20,9 +20,9 @@
 
       <div class="field">
         <% if @user.avatar? %>
-          <%= image_tag @user.avatar.profile_icon.url, {class: "avatar", id: "avatar-image"} %>
+          <%= image_tag @user.avatar.big_icon.url, {class: "avatar", id: "avatar-image"} %>
         <% else %>
-          <%= image_tag "noavatar_50.png", {class: "avatar", id: "avatar-image"} %>
+          <%= image_tag "big_noavatar.png", {class: "avatar", id: "avatar-image"} %>
         <% end %>
         <%# defauleのtype="submit" でclickするとpostリクエストが発生する %>
         <button type="button" class="btn btn-link avatar-upload">変更する</button> 
@@ -35,7 +35,7 @@
       </div>
 
       <div class="actions">
-        <%= f.submit "送信する", class: "btn btn-main-green" %>
+        <%= f.submit "送信する", class: "btn btn-main-green", id: "post-btn"%>
       </div>
     <% end %>
     <%= render "image_modal" %>

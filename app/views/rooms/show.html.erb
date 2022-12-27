@@ -13,9 +13,9 @@
               <div class="card-body">
                 <div class="card-avatar">
                   <% if message.user.avatar? %>
-                    <%= image_tag message.user.avatar.room_icon.url%>
+                    <%= image_tag message.user.avatar.mini_icon.url%>
                   <% else %>
-                    <%= image_tag ("noavatar_45.png") %>
+                    <%= image_tag ("mini_noavatar.png") %>
                   <% end %>
                 </div>
                 <div class="card-content">

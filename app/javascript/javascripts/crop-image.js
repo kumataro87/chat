@@ -2,6 +2,7 @@ import Cropper from 'cropperjs'
 
 function selectRange(obj) {
   const image = document.getElementById('change-image');
+  const post_btn = document.getElementById('post-btn')
   const cropper = new Cropper(image, {
     aspectRatio: 1 / 1,
     viewMode: 3,
@@ -12,14 +13,15 @@ function selectRange(obj) {
       document.getElementById("user_image_h").value = e.detail.height;
     }
   });
-  document.getElementById('modal-cut').addEventListener('click', function () {
+  document.getElementById('modal-cut').addEventListener('click', function() {
     const resultImgUrl = cropper.getCroppedCanvas().toDataURL();
     const result = document.getElementById('avatar-image');
-    result.width  = 50;
-    result.height = 50;
+    result.width  = 90;
+    result.height = 90;
     result.src = resultImgUrl;
     cropper.destroy()
     modalClose()
+    post_btn.click();
   });
   document.getElementById('modal-close').addEventListener('click', function(){
     // getCroppedCanvas()を実行しない場合、再度画像を変更する際に以前読み込んだ画像が表示される

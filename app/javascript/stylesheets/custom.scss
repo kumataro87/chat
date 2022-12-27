@@ -118,6 +118,7 @@ input:not(#user_remember_me){
 
 img.avatar{
   margin: 15px;
+  border-radius: 50%;
 }
 
 .checkbox {
@@ -206,6 +207,10 @@ img.avatar{
     }
     .card-content {
       margin: 0 15px;
+    .card-user-name {
+      font-size: 0.85em;
+      font-weight: bold;
+    }
     }
   }
 }
