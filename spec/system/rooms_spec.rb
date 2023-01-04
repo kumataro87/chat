@@ -14,8 +14,8 @@ RSpec.describe Room, type: :system do
       visit user_path(other_user)
       # 初めてトークを開くとき、ルームが作成されること
       expect{ click_button "トークへ" }.to change(Room, :count).by(1)
-      click_on "ユーザー一覧に戻る"
-      expect(page).to have_content "ユーザー一覧"
+      click_on "ホームに戻る"
+      expect(current_path).to eq root_path
       visit user_path(other_user)
       # 2回目以降はルームが作成されないこと
       expect{ click_on "トークへ" }.to_not change(Room, :count)

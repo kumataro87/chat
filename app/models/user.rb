@@ -31,4 +31,12 @@ class User < ApplicationRecord
   def follow(other_user)
     following << other_user
   end
+
+  def follow?(other_user)
+    following.include?(other_user)
+  end
+
+  def follower?(other_user)
+    followers.include?(other_user)
+  end
 end

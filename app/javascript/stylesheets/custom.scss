@@ -110,10 +110,12 @@ input#user_avatar{
 }
 
 /* user form */
-input:not(#user_remember_me){
-  border: 1px solid $light-gray;
-  width: 100%;
-  margin-bottom: 15px;
+form {
+  input:not(#user_remember_me, .flex-right){
+    border: 1px solid $light-gray;
+    width: 100%;
+    margin-bottom: 15px;
+  }
 }
 
 img.avatar{
@@ -224,4 +226,41 @@ img.avatar{
     flex-basis:  45px;
     margin-left: 10px;
   }
+}
+
+// users#show
+.profile {
+    display: inline-flex;
+    width: 100%;
+  .profile-avatar {
+    height: auto;
+    margin-right: 15px;
+  }
+  .name-introduction {
+    display: block;
+    width: 100%;
+    .items-wrapper {
+      display: flex;
+    }
+    .profile-name {
+      font-weight: bold;
+      font-size: 1.2em;
+      display: flex;
+    }
+    .btn-user_path{
+      margin-left: auto;
+      font-size: 14px;
+    }
+    #new_room {
+      margin-left: auto;
+    } 
+    #follow_form {
+      margin-left: auto;
+    }
+  }
+}
+.btn-default {
+  width: auto;
+  border: 1px solid $light-gray;
+  padding: 6px 12px;
 }

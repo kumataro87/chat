@@ -3,11 +3,11 @@ class AccountsController < ApplicationController
   before_action :correct_user
 
   def edit
-    @user = User.find_by(params[:user_id])
+    @user = User.find(params[:user_id])
   end
 
   def update
-    @user = User.find_by(params[:user_id])
+    @user = User.find(params[:user_id])
     if image_update?(params[:user][:avatar])
       if @user.update(avatar_params)
         other_attr = account_params

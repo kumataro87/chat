@@ -1,22 +1,51 @@
-<% if mutual_followed?(@user) %>
-  <% if @is_room %>
-    <p class="room">
-      <%= link_to 'トークへ', @room %>
-    </p>
-  <% else %>
-    <!--roomとuser_roomsテーブルにレコードを作成する-->
-    <!--user_roomsレーブルにはuser_idを送る必要あり-->
-    <%= form_for @room do |f| %>
-      <%= fields_for @user_room do |e| %>
-        <%= e.hidden_field :user_id, value: @user.id %>
-      <% end %>
-      <%= f.submit "トークへ", class: "btn btn-link"%>
-    <% end %>
-    <% end %>
-<% else %>
-  tetet
-  
-<% end %>
-<% if current_user?(@user) %>
-  <%= link_to "プロフィールを編集",  edit_user_accounts_path(current_user.id) %>
-<% end %>
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="profile">
+      <div class="profile-avatar">
+        <% if @user.avatar? %>
+          <%= image_tag @user.avatar.big_icon.url %>
+        <% else %>
+          <%= image_tag "big_noavatar.png" %>
+        <% end %>
+      </div>
+      <div class="name-introduction">
+        <div class="items-wrapper">
+          <div class="profile-name">
+            <%= @user.name %>
+          </div>
+          <%# ***** トークへボタン ***** %>
+          <% if mutual_followed?(@user) %>
+            <% if @is_room %>
+              <%= link_to 'トークへ', @room, class: "btn btn-default btn-user_path"%>
+            <% else %>
+              <%# ***** roomの作成 ***** %>
+              <%# 初めてメッセージを送る場合roomを作成する %>
+              <!--room・user_roomsに新規レコード作成 -->
+              <%= form_for @room do |f| %>
+                <%= fields_for @user_room do |e| %>
+                  <%= e.hidden_field :user_id, value: @user.id %>
+                <% end %>
+                <%= f.submit "トークへ", class: "btn btn-default btn-user_path"%>
+              <% end %>
+            <% end %>
+          <% else %>
+          <%# ***** プロフィール編集 ***** %>
+            <% if current_user?(@user) %>
+              <%= link_to "プロフィールを編集",  edit_user_accounts_path(current_user.id), class: "btn btn-default btn-user_path" %>
+            <% else %>
+              <% if not current_user.follow?(@user) %>
+                <%= render 'follow' %>
+              <% elsif current_user.follower?(@user) %>
+                <p>フォローされています</p>
+              <% end %>
+            <% end %>
+          <% end %>
+        <%# *************************** %>
+        </div>
+        <div class="profile-introduction">
+          <%= @user.introduction %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

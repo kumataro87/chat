@@ -50,18 +50,78 @@ RSpec.describe "Users", type: :request do
       end
     end
 
-    context "自身のプロフィールにアクセスした場合" do
-      it "トーク(Link)が表示されていないこと" do
-      end
-      it "プロフィールを変更(リンク)が表示されていること" do
-      end
-    end
+    context "ログインしている場合" do
+      let(:user){ create(:user) }
+      let(:other_user){ create(:other_user) }
 
-    context "Friendのプロフィールにアクセスした場合" do
-      it "トーク(Link)が表示されていること" do
+      before do
+        log_in(user)
       end
 
-      it "プロフィールを変更(リンク)が表示されていないこと" do
+      context "自身のプロフィールにアクセスした場合" do
+        it "トーク(Link)が表示されていないこと" do
+          get user_path(user)
+          expect(response.body).not_to include "トークへ"
+        end
+
+        it "プロフィールを変更(リンク)が表示されていること" do
+          get user_path(user)
+          expect(response.body).to include "プロフィールを編集"
+        end
+
+        it "友達追加が表示されていないこと" do
+          get user_path(user)
+          expect(response.body).not_to include "友達追加"
+        end
+
+      end
+      
+      context "Friendのプロフィールにアクセスした場合" do
+        before do
+          user.followers << other_user
+          user.following << other_user
+        end
+
+        it "トーク(Link)が表示されていること" do
+          get user_path(other_user)
+          expect(response.body).to include "トークへ"
+        end
+        
+        it "プロフィールを変更(リンク)が表示されていないこと" do
+          get user_path(other_user)
+          expect(response.body).not_to include "プロフィールを変更"
+        end
+        
+        it "友達追加が表示されていないこと" do
+          get user_path(other_user)
+          expect(response.body).not_to include "友達追加"
+        end
+      end
+
+      context "フォローしていないユーザーのプロフィールにアクセスした場合" do
+        it "トーク(Link)が表示されていない" do
+          get user_path(other_user)
+          expect(response.body).not_to include "トークへ"
+          expect{user.followers << other_user}.to change{ Relationship.count }.by(1)
+          get user_path(other_user)
+          expect(response.body).not_to include "トークへ"
+        end
+        
+        it "プロフィールを変更(リンク)が表示されていないこと" do
+          get user_path(other_user)
+          expect(response.body).not_to include "プロフィールを変更"
+          expect{user.followers << other_user}.to change{ Relationship.count }.by(1)
+          get user_path(other_user)
+          expect(response.body).not_to include "プロフィールを変更"
+        end
+        
+        it "友達追加が表示されていること" do
+          get user_path(other_user)
+          expect(response.body).to include "友達追加"
+          expect{user.followers << other_user}.to change{ Relationship.count }.by(1)
+          get user_path(other_user)
+          expect(response.body).to include "友達追加"
+        end
       end
     end
   end
