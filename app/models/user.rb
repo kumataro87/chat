@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+           :recoverable, :rememberable, :validatable
   has_many :messages,   dependent: :destroy
   has_many :user_rooms, dependent: :destroy
   has_many :rooms, through: :user_rooms
@@ -17,6 +17,7 @@ class User < ApplicationRecord
   # following_idの集合を作成
   has_many :followers, through: :passive_relationships
 
+  validates :user_name, presence: true, length: { maximum: 16 }, uniqueness: true
   validates :name, presence: true, length: { maximum: 30 }
   validates :introduction, length: { maximum: 255 }
   validates :status_message, length: { maximum: 30 }

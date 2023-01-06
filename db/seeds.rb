@@ -1,13 +1,16 @@
-User.create!( name: "Anya",
+User.create!( user_name: "anya"
+              name: "Anya",
               email: "hogehoge@example.com",
               password: "password")
 
-User.create!( name: "Desmond",
+User.create!( user_name: "desmond"
+              name: "Desmond",
               email: "foobar@example.com",
               password: "password")
 
 10.times do |n|
-  User.create!( name:  Faker::Name.name,
+  User.create!( 
+                name:  Faker::Name.name,
                 email: "test#{n}@example.com",
                 password: "password"
               )
