@@ -3,7 +3,7 @@
     <div class="profile">
       <div class="profile-avatar">
         <% if @user.avatar? %>
-          <%= image_tag @user.avatar.big_icon.url %>
+          <%= image_tag @user.avatar.big_icon.url, class: "avatar" %>
         <% else %>
           <%= image_tag "big_noavatar.png" %>
         <% end %>
