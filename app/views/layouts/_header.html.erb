@@ -1,26 +1,31 @@
 <header class="navbar navbar-expand-md">
   <div class="container">
     <%= link_to "Chat App", root_path, id: "logo" %>
-    <ul class="navbar-nav navbar-right">
-      <% if user_signed_in? %>
-        <li class="nav-item">
-        <%= link_to image_tag("outline_search_white_24dp.png")+"検索", search_index_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">アカウント</a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><%= link_to "Profile", current_user, {class: "dropdown-item"} %></li>
-            <li><%= link_to "Settings", edit_user_registration_path, {class: "dropdown-item"} %></li>
-            <li><hr class="dropdown-divider"></li>
-            <li>
-              <%= link_to "Log out", destroy_user_session_path, {method: :delete, class: "dropdown-item"} %>
-            </li>
-          </ul>
-        </li>
-      <% else %>
-        <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
-        <li class="nav-item sign-up"><%= link_to "新規作成", new_user_registration_path, class: "nav-link" %></li>
-      <% end %>
-    </ul>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <%= image_tag "outline_reorder_white_24dp.png" %>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+          <%= link_to image_tag("outline_search_white_24dp.png")+"検索", search_index_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">アカウント</a>
+            <ul class="dropdown-menu p-absolute" aria-labelledby="navbarDropdownMenuLink">
+              <li><%= link_to "Profile", current_user, {class: "dropdown-item"} %></li>
+              <li><%= link_to "Settings", edit_user_registration_path, {class: "dropdown-item"} %></li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <%= link_to "Log out", destroy_user_session_path, {method: :delete, class: "dropdown-item"} %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
+          <li class="nav-item sign-up"><%= link_to "新規作成", new_user_registration_path, class: "nav-link" %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </header>

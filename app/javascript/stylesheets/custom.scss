@@ -39,6 +39,17 @@ p {
 
 /*  header */
 header.navbar{
+  .navbar-toggler{
+    color: $main-white;
+    &:focus, &.focus{
+      color: $main-white;
+      box-shadow: 0 0 0 0.1em;
+    }  
+    &:active, &.active{
+      color: $main-white;
+      box-shadow:none;
+    }
+  }
   background-color: $main-green;
   margin-bottom: 40px;
   #logo {
@@ -46,7 +57,18 @@ header.navbar{
     font-size: 1.5em;
     text-decoration: none
   }
-
+  #navbarNavDropdown{
+    justify-content:
+    flex-end; 
+  }
+  .dropdown-menu.p-absolute{
+    position: absolute;
+  }
+  .nav-item {
+    width: fit-content;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+  }
   .nav-item.sign-up{
     border: solid $main-white;
     border-radius: 0.3em;
@@ -217,9 +239,6 @@ img.avatar{
   .profile-avatar {
     height: auto;
     margin-right: 15px;
-    #avatar {
-      
-    }
   }
   .name-introduction {
     display: block;
@@ -233,14 +252,17 @@ img.avatar{
       display: flex;
     }
     .btn-user_path{
-      margin-left: auto;
+      width: fit-content;
+      margin-left: 16px;
       font-size: 14px;
     }
     #new_room {
-      margin-left: auto;
+      width: fit-content;
+      margin-left: 16px;
     } 
     #follow_form {
-      margin-left: auto;
+      width: fit-content;
+      margin-left: 16px;
     }
   }
 }
@@ -248,4 +270,22 @@ img.avatar{
   width: auto;
   border: 1px solid $light-gray;
   padding: 6px 12px;
+}
+
+// GET search
+.search-form {
+  display:flex;
+  
+  #user_name{
+    flex-basis: auto;
+  }
+  .search-btn {
+    flex-basis:  45px;
+    margin-left: 10px;
+    justify-self: flex-end;
+  }
+}
+
+.debug {
+  text-align: center;
 }
