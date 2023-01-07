@@ -4,24 +4,6 @@ $main-white: #fff;
 $heavy-gray: #777;
 $light-gray: #bbb;
 
-// @mixin clear-btn {
-//   background-color: transparent;
-//     border: none;
-//     &:hover {
-//       background-color: transparent;
-//       border: none;
-//     }
-//     &:focus, &.focus{
-//       background-color: transparent;
-//       border: none;
-//     }  
-//     &:active, &.active{
-//       background-color: transparent;
-//       border: none;
-//       box-shadow:none
-//     }
-// }
-
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -48,10 +30,10 @@ p {
 
 .btn-main-green{
   background-color: $main-green;
-  color: #fff;
+  color: $main-white;
   &:hover {
         background-color: $secondary-green;
-        color:#fff;
+        color:$main-white;
       }
 }
 
@@ -157,7 +139,7 @@ img.avatar{
     background-color: #111;
   }
   .modal-header {
-    color: #fff;
+    color: $main-white;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -165,10 +147,10 @@ img.avatar{
       margin: 0;
     }
     #modal-close {
-      color: #fff;
+      color: $main-white;
     }
     #modal-cut {
-      color: #fff;
+      color: $main-white;
     }
   }
 }
@@ -235,6 +217,9 @@ img.avatar{
   .profile-avatar {
     height: auto;
     margin-right: 15px;
+    #avatar {
+      
+    }
   }
   .name-introduction {
     display: block;
