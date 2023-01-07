@@ -4,6 +4,11 @@ RSpec.describe User, type: :model do
   describe Relationship do
     let!(:user){ create(:user) }
     let!(:other_user){ create(:other_user) }
+    
+    it "user_nameが二ユークであること" do
+      other_user.user_name = "tarou"
+      expect(other_user).not_to be_valid
+    end
 
     it "active_relationshipsが有効であること" do
       r = user.active_relationships.build(followed_id: other_user.id)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_12_111113) do
+ActiveRecord::Schema.define(version: 2023_01_05_020129) do
 
   create_table "messages", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(version: 2022_12_12_111113) do
     t.string "avatar"
     t.text "introduction"
     t.string "status_message"
+    t.string "user_name", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
