@@ -48,15 +48,3 @@ export function cropperAvatar(obj){
     selectRange(obj)
   })
 }
-
-function modalOpen() {
-    const modal = document.getElementById('modal')
-    modal.style.opacity = 1
-    modal.style.zIndex  = 1
-}
-
-function modalClose() {
-  const modal = document.getElementById('modal')
-  modal.style.opacity = 0
-  modal.style.zIndex = -1
-}

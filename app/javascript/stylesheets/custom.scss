@@ -145,6 +145,10 @@ img.avatar{
   max-width: 100%;
 }
 
+#modal.modal-edit {
+  height: 600px;
+  width:  600px;
+}
 #modal {
   opacity: 0;
   visibility: inherit;
@@ -153,8 +157,6 @@ img.avatar{
   top: 50px;
   left: 50%;
   transform: translateX(-50%);
-  height: 600px;
-  width:  600px;
   overflow: auto;
   background-color: #111;
   .modal-content {
@@ -239,6 +241,9 @@ img.avatar{
   .profile-avatar {
     height: auto;
     margin-right: 15px;
+    .avatar {
+      cursor: pointer;
+    }
   }
   .name-introduction {
     display: block;
@@ -266,6 +271,15 @@ img.avatar{
     }
   }
 }
+
+.modal-usershow {
+  margin-top: 20px;
+  width: 300px;
+  height: 300px;
+}
+.close-btn {
+  background-color: $heavy-gray;
+}
 .btn-default {
   width: auto;
   border: 1px solid $light-gray;
@@ -275,7 +289,6 @@ img.avatar{
 // GET search
 .search-form {
   display:flex;
-  
   #user_name{
     flex-basis: auto;
   }

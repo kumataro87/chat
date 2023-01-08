@@ -3,7 +3,7 @@
     <div class="profile">
       <div class="profile-avatar">
         <% if @user.avatar? %>
-          <%= image_tag @user.avatar.big_icon.url, class: "avatar" %>
+          <%= image_tag @user.avatar.big_icon.url, class: "avatar", onclick: "modalOpen();" %>
         <% else %>
           <%= image_tag "big_noavatar.png" %>
         <% end %>
@@ -47,5 +47,15 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<%# **** modal **** %>
+<div id="modal" class="modal-usershow">
+  <div class="close-btn" onclick="modalClose();">
+    <%= image_tag 'outline_close_white_24dp.png' %>
+  </div>
+  <div class="avatar">
+    <%= image_tag @user.avatar.url %>
   </div>
 </div>
