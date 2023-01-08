@@ -30,6 +30,7 @@ import { cropperAvatar } from "../javascripts/crop-image";
 global.cropperAvatar = cropperAvatar
 
 // GET users/:id/account/edit, users/:id/show
-import { modalOpen, modalClose } from "../javascripts/display-img";
+import { modalOpen, modalClose, fade } from "../javascripts/display-img";
 global.modalOpen = modalOpen
 global.modalClose = modalClose
+global.fade = fade
