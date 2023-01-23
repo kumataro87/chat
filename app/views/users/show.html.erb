@@ -51,12 +51,14 @@
 </div>
 
 <%# **** modal **** %>
-<div id="modal" class="modal-usershow">
-  <div class="close-btn" onclick="fade();modalClose();">
-    <%= image_tag 'outline_close_white_24dp.png' %>
+<% unless @user.avatar.url.nil? %>
+  <div id="modal" class="modal-usershow">
+    <div class="close-btn" onclick="fade();modalClose();">
+      <%= image_tag 'outline_close_white_24dp.png' %>
+    </div>
+    <div class="avatar">
+      <%= image_tag @user.avatar.url %>
+    </div>
   </div>
-  <div class="avatar">
-    <%= image_tag @user.avatar.url %>
-  </div>
-</div>
-<div id="fadeLayer"></div>
+  <div id="fadeLayer"></div>
+<% end %>
