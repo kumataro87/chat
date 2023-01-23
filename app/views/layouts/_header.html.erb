@@ -1,6 +1,7 @@
-<header class="navbar navbar-expand-md">
+<header class="navbar navbar-expand-md", id="nav">
   <div class="container">
-    <%= link_to "Chat App", root_path, id: "logo" %>
+    <%= link_to "BrowserChat", root_path, id: "logo", 
+    data: {"turbolinks"=>false} %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <%= image_tag "outline_reorder_white_24dp.png" %>
     </button>
@@ -22,8 +23,12 @@
             </ul>
           </li>
         <% else %>
-          <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link" %></li>
-          <li class="nav-item sign-up"><%= link_to "新規作成", new_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item">
+            <%= link_to "ログイン", new_user_session_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item sign-up">
+            <%= link_to "新規作成", new_user_registration_path, class: "nav-link" %>
+          </li>
         <% end %>
       </ul>
     </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Chat App</title>
+    <title>BrowserChat</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -12,7 +12,7 @@
   <body>
     <%= render "layouts/header" %>
     <%= flash[:alert] %>
-    <div class="container">
+    <div class="container" id="view-main">
       <%= yield %>
     </div>
     <%= debug(params) if Rails.env.development? %>

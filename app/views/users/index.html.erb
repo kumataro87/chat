@@ -1,10 +1,12 @@
 <div class="row">
-  <div class="col-md-6 offset-md-3">
-    <% if user_signed_in? %>
+  <% if user_signed_in? %>
+    <div class="col-md-6 offset-md-3">
       <div class="user-group">
         <div class="user-group current-user">
           <div class="user-group-detail current-user">
-            <div class="user-group-name">ユーザー</div>
+            <div class="user-group-name">
+              ユーザー
+            </div>
           </div>
           <%= render current_user %>
         </div>
@@ -32,10 +34,50 @@
           </div>
           <%= render @followers if @followers %>
         </div>
-      <% else %>
-        <%= link_to "新規作成", new_user_registration_path %>
-        <%= link_to "ログイン", new_user_session_path %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% else %>
+    <div class="col-lg-6 root-view">
+      <div class="explanation">
+        <p>ブラウザで利用可能なチャットアプリです。</br>
+          アプリのインストールをすることなく使用できます。
+        </p>
+      </div>
+    </div>
+    <div class="col-lg-6 root-view">
+      <div class="signup">
+        <p>以下のリンクから新規登録、またはログインすることができます。</br>
+        <%= link_to "登録して始める", new_user_registration_path, class: "btn btn-wide btn-main-green"%></p>
+      </div>
+    </div>
+  <% end %>
 </div>
+
+<% unless user_signed_in? %>
+  <script>
+    const mediaquery = window.matchMedia('(max-width: 992px)');
+    var elm = document.getElementById("view-main");
+    elm.style.marginTop = "0";
+
+    var header_h = document.getElementById('nav').clientHeight;
+    var main_views = document.getElementsByClassName("root-view");
+    var ini_height = main_views[0].clientHeight;
+
+    // ページが読み込まれた時に実行
+    handle(mediaquery);
+    // ウィンドウサイズを変更しても実行（ブレイクポイントの監視）
+    mediaquery.addListener(handle);
+
+    function handle(mm) {
+      if (mm.matches){
+        main_views[0].style.height = (ini_height - header_h) / 2 + "px";
+        main_views[1].style.height = (ini_height - header_h) /2 + "px";
+        } else {
+        main_views[0].style.height = ini_height - header_h + "px";
+        main_views[1].style.height = ini_height - header_h + "px";
+      }
+    }
+    var c = document.getElementById("view-main")
+    c.classList.replace("container", "container-fluid")
+  </script>
+<% end %>
